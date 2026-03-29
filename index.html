@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>N'Barbearia</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: gold;
+    }
+
+    form {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input, select {
+      width: 90%;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      background: gold;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 95%;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <h1>✂️ N'Barbearia</h1>
+  <p>Agende seu horário</p>
+
+  <form onsubmit="enviarWhats(event)">
+    
+    <input type="text" id="nome" placeholder="Seu nome" required>
+
+    <select id="servico" required>
+      <option value="">Escolha o serviço</option>
+      <option>Corte Social - R$25</option>
+      <option>Degradê - R$30</option>
+      <option>Corte + Barba - R$50</option>
+      <option>Barba - R$25</option>
+    </select>
+
+    <input type="date" id="data" required>
+    <input type="time" id="hora" required>
+
+    <button type="submit">Agendar no WhatsApp</button>
+
+  </form>
+
+  <script>
+    function enviarWhats(event) {
+      event.preventDefault();
+
+      let nome = document.getElementById("nome").value;
+      let servico = document.getElementById("servico").value;
+      let data = document.getElementById("data").value;
+      let hora = document.getElementById("hora").value;
+
+      let numero = "5566999693540"; // coloque seu número
+
+      let mensagem = `Olá, meu nome é ${nome}.
+Quero agendar:
+
+✂️ Serviço: ${servico}
+📅 Data: ${data}
+⏰ Hora: ${hora}`;
+
+      let url = `https://wa.me/${5566999693540}?text=${encodeURIComponent(mensagem)}`;
+
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+</html>
